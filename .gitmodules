@@ -4,3 +4,6 @@
 [submodule "MathFuncParamCheckerClangStaticAnalyzer"]
 	path = MathFuncParamCheckerClangStaticAnalyzer
 	url = https://github.com/srki995/MathFuncParamCheckerClangStaticAnalyzer
+[submodule "AssignOrFloatCompInBranchCondChecker-Clang"]
+	path = AssignOrFloatCompInBranchCondChecker-Clang
+	url = https://github.com/marinaborozan/AssignOrFloatCompInBranchCondChecker-Clang
