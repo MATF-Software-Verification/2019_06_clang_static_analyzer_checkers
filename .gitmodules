@@ -1,0 +1,6 @@
+[submodule "SimpleAllocationOperatorsChecker"]
+	path = SimpleAllocationOperatorsChecker
+	url = https://github.com/nikk-o/SimpleAllocationOperatorsChecker
+[submodule "MathFuncParamCheckerClangStaticAnalyzer"]
+	path = MathFuncParamCheckerClangStaticAnalyzer
+	url = https://github.com/srki995/MathFuncParamCheckerClangStaticAnalyzer
