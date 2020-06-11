@@ -1,16 +1,10 @@
 # Collection of Clang Static Anlyzer Checkers
-For instructions and description about checkers check README file of each submodule 
+For instructions and description about checkers check README file of each specific directory 
 
 ## Setup
 
 - Clone repo: 
 
-`git clone https://github.com/srki995/VS_Clang_Static_Analyzer_Checkers`
+`git clone https://github.com/MATF-Software-Verification/02_2_clang_static_analyzer_checkers.git`
 
-- If it's the first time you check-out a repo you need to use --init first:
 
-`git submodule update --init --recursive`
-
-- Update submodules to:
-
-`git submodule update --recursive --remote`
