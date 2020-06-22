@@ -1,5 +1,5 @@
 # Math function arguments checker
-MathFuncParamChecker is Clang Static Analyzer checker for input arguments of math functions (currently for sqrt and pow), but could be generalized for custom function.
+MathFuncParamChecker is Clang Static Analyzer checker for input arguments of math functions (currently for sqrt and pow), but could be customized for all math function.
 
 ## Setup
 - Build [LLVM](https://github.com/llvm/llvm-project) as described in README

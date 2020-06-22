@@ -77,13 +77,11 @@ void MathFuncParamChecker::checkSqrtArgs(const CallExpr *CE,
     return;
   ProgramStateRef state = C.getState();
 
-  QualType TypeArgX = InputArgX->getType();
-
-  if (TypeArgX->isArithmeticType() && C.isGreaterOrEqual(InputArgX, 0)) {
+  if (C.isGreaterOrEqual(InputArgX, 0)) {
     return;
   }
 
-  if (TypeArgX->isArithmeticType() && C.isNegative(InputArgX)) {
+  if (C.isNegative(InputArgX)) {
     SqrtBugType.reset(new BugType(this,
                                   "Function argument is negative, domain error",
                                   "Math func input args error"));
@@ -121,11 +119,7 @@ void MathFuncParamChecker::checkPowArgs(const CallExpr *CE,
     return;
   ProgramStateRef state = C.getState();
 
-  QualType TypeArgX = InputArgX->getType();
   QualType TypeArgY = InputArgY->getType();
-
-  if (!TypeArgX->isArithmeticType() || !TypeArgY->isArithmeticType())
-    return;
 
   if (C.isGreaterOrEqual(InputArgX, 1))
     return;
