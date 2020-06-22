@@ -99,12 +99,12 @@ REGISTER_MAP_WITH_PROGRAMSTATE(AllocationMap, SymbolRef,
 
 DeleteOperatorChecker::DeleteOperatorChecker() {
   deleteCalledMultiple.reset(
-      new BugType(this, "DeleteCalledMultipleTimes", "BugCategory")),
-      resourceLeak.reset(new BugType(this, "ResourceLeak", "BugCategory")),
+      new BugType(this, "DeleteCalledMultipleTimes", "BugCategory"));
+      resourceLeak.reset(new BugType(this, "ResourceLeak", "BugCategory"));
       deleteCalledOnNull.reset(
-          new BugType(this, "DeleteCalledOnNull", "BugCategory")),
+          new BugType(this, "DeleteCalledOnNull", "BugCategory"));
       possibleDeleteCalledOnNull.reset(
-          new BugType(this, "PossibleDeleteCalledOnNull", "BugCategory")),
+          new BugType(this, "PossibleDeleteCalledOnNull", "BugCategory"));
       useAfterDelete.reset(new BugType(this, "UseAfterDelete", "BugCategory"));
 }
 
