@@ -94,28 +94,18 @@ bool AssignOrFloatCompInBranchCondChecker::isLoopCounterFloat(
 void AssignOrFloatCompInBranchCondChecker::checkBranchCondition(
     const Stmt *Condition, CheckerContext &Ctx) const {
 
-  // get original branch statement where condition is used, check if it is a
-  // loop
 
-  const ParentMap &parentMap = Ctx.getLocationContext()->getParentMap();
-  if (const Stmt *branchStatement = parentMap.getParent(Condition)) {
-
-    if (isa<ForStmt>(branchStatement) || isa<WhileStmt>(branchStatement) ||
-        isa<DoStmt>(branchStatement)) {
-
-      // check for loop counter float
+  // check for loop counter float
 
       if (isLoopCounterFloat(Condition)) {
 
         if (!floatCntBT)
           floatCntBT.reset(
-              new BuiltinBug(this, "Loop counter is float, can cause undefined "
-                                   "behavior due to imprecise comparison"));
+              new BuiltinBug(this, "Comparison of float values in branch condition can cause undefined "
+                                   "behavior due to impreciseness of float comparison"));
         const Expr *Ex = cast<Expr>(Condition);
         ReportBug(Ctx, Ex->getSourceRange(), floatCntBT);
       }
-    }
-  }
 
   // check for assignment
 
