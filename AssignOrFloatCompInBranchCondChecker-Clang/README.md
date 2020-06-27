@@ -1,5 +1,5 @@
 # Assign or Float Comparison in Branch Condition Checker
-AssignOrFloatCompInBranchCondChecker is Clang Static Analyzer checker for assignment as controlling statement in branch condition and floating type comparison in loop condition.
+AssignOrFloatCompInBranchCondChecker is Clang Static Analyzer checker for assignment as controlling statement in branch condition and floating type comparison in branch condition.
 
 ## Setup
 - Build [LLVM](https://github.com/llvm/llvm-project) as described in README

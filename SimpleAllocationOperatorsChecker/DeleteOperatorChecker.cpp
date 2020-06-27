@@ -63,16 +63,16 @@ class DeleteOperatorChecker
                      check::PreCall, check::PreStmt<MemberExpr>,
                      check::DeadSymbols> {
 
-  std::unique_ptr<BugType> deleteCalledMultiple;
-  std::unique_ptr<BugType> resourceLeak;
-  std::unique_ptr<BugType> deleteCalledOnNull;
-  std::unique_ptr<BugType> possibleDeleteCalledOnNull;
-  std::unique_ptr<BugType> useAfterDelete;
+  mutable std::unique_ptr<BugType> deleteCalledMultiple;
+  mutable std::unique_ptr<BugType> resourceLeak;
+  mutable std::unique_ptr<BugType> deleteCalledOnNull;
+  mutable std::unique_ptr<BugType> possibleDeleteCalledOnNull;
+  mutable std::unique_ptr<BugType> useAfterDelete;
 
   void ReportMemoryLeakBug(std::vector<SymbolRef> symbols,
                            CheckerContext &checkerContext) const;
   void ReportBug(CheckerContext &checkerContext,
-                 std::unique_ptr<BugType> bugType, std::string message,
+                 std::unique_ptr<BugType>& bugType, std::string message,
                  bool sinkNode) const;
 
 public:
@@ -248,7 +248,7 @@ void DeleteOperatorChecker::checkPreStmt(const MemberExpr *expr,
 }
 
 void DeleteOperatorChecker::ReportBug(CheckerContext &checkerContext,
-                                      std::unique_ptr<BugType> bugType,
+                                      std::unique_ptr<BugType>& bugType,
                                       std::string message,
                                       bool sinkNode) const {
 

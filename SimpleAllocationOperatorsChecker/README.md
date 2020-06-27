@@ -16,7 +16,7 @@ Functionalities:
 ```
 let ParentPackage = UnixAlpha in {
     ...
-    def MathFuncParamChecker : Checker<"DeleteOperatorChecker">,  
+    def DeleteOperatorChecker : Checker<"DeleteOperatorChecker">,
       HelpText<"Does some allocation/deallocation basic error checks.">,  
       Documentation<NotDocumented>;
     ...
