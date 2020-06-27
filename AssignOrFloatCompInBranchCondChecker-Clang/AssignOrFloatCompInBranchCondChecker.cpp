@@ -19,7 +19,7 @@ class AssignOrFloatCompInBranchCondChecker
   void ReportBug(CheckerContext &Ctx, SourceRange range,
                  std::unique_ptr<BuiltinBug> &BT) const;
   bool isRightCommaOperandAssignment(const Stmt *Statement) const;
-  bool isLoopCounterFloat(const Stmt *Statement) const;
+  bool isFloatComparison(const Stmt *Statement) const;
 
 public:
   void checkBranchCondition(const Stmt *Condition, CheckerContext &Ctx) const;
@@ -64,9 +64,9 @@ bool AssignOrFloatCompInBranchCondChecker::isRightCommaOperandAssignment(
   return false;
 }
 
-// checks if loop counter is a floating point variable
+// checks if there is comparison of floating point values
 
-bool AssignOrFloatCompInBranchCondChecker::isLoopCounterFloat(
+bool AssignOrFloatCompInBranchCondChecker::isFloatComparison(
     const Stmt *Statement) const {
 
   if (const BinaryOperator *BinOperator = dyn_cast<BinaryOperator>(Statement)) {
@@ -95,9 +95,9 @@ void AssignOrFloatCompInBranchCondChecker::checkBranchCondition(
     const Stmt *Condition, CheckerContext &Ctx) const {
 
 
-  // check for loop counter float
+  // check for float comparison
 
-      if (isLoopCounterFloat(Condition)) {
+      if (isFloatComparison(Condition)) {
 
         if (!floatCntBT)
           floatCntBT.reset(
